@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body { margin: 0; -webkit-tap-highlight-color: transparent; }
+
+.rab-app {
+  --paper: #EFF1EC;
+  --surface: #FAFAF6;
+  --ink: #16283D;
+  --charcoal: #2A2B27;
+  --muted: #767A6E;
+  --line: #D9D8CC;
+  --rust: #BC4A18;
+  --rust-soft: #F4E4DB;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.rab-mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.rab-card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+.rab-btn-primary, .rab-btn-accent, .rab-btn-ghost, .rab-btn-danger {
+  display: inline-flex; align-items: center; gap: 6px; border-radius: 6px; padding: 8px 14px;
+  font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: background-color .15s; white-space: nowrap;
+}
+.rab-btn-primary { background: var(--ink); color: #fff; }
+.rab-btn-primary:hover { background: #0F1E30; }
+.rab-btn-primary:disabled { opacity: .6; cursor: not-allowed; }
+.rab-btn-accent { background: var(--rust); color: #fff; }
+.rab-btn-accent:hover { background: #9E3D13; }
+.rab-btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.rab-btn-ghost:hover { background: var(--paper); }
+.rab-btn-danger { background: #B3261E; color: #fff; }
+.rab-btn-danger:hover { background: #8F1E18; }
+.rab-icon-btn {
+  display: inline-flex; align-items: center; justify-content: center; background: transparent; border: none;
+  color: var(--muted); cursor: pointer; padding: 6px; border-radius: 6px; transition: background-color .15s, color .15s;
+}
+.rab-icon-btn:hover { background: var(--paper); color: var(--ink); }
+.rab-icon-btn.danger:hover { color: #B3261E; background: #FBEAE8; }
+.rab-input, .rab-select {
+  width: 100%; border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; font-size: 14px; background: #fff; color: var(--charcoal);
+}
+.rab-input:focus, .rab-select:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(22,40,61,0.1); }
+.rab-label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 4px; }
+.rab-nav-tab {
+  position: relative; padding: 14px 2px; font-size: 14px; font-weight: 500; color: var(--muted);
+  background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent; transition: color .15s;
+}
+.rab-nav-tab:hover { color: var(--ink); }
+.rab-nav-tab.active { color: var(--ink); border-bottom-color: var(--rust); }
+.rab-row { transition: background-color .1s; }
+.rab-row:hover { background: var(--paper); }
+.rab-project-card { transition: border-color .15s; cursor: pointer; }
+.rab-project-card:hover { border-color: var(--ink); }
+.rab-grid-header {
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(22,40,61,0.05) 23px, rgba(22,40,61,0.05) 24px),
+    repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(22,40,61,0.05) 23px, rgba(22,40,61,0.05) 24px);
+}
+.print-only { display: none; }
+@keyframes rabFadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+.rab-modal-panel { animation: rabFadeIn .15s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .rab-app * { transition: none !important; animation: none !important; }
+}
+@media print {
+  .no-print { display: none !important; }
+  .print-only { display: inline; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
